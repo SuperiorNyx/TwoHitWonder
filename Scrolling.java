@@ -12,7 +12,7 @@ public class Scrolling extends Drawable implements ActionListener {
    }
    
    public void actionPerformed(ActionEvent event) {
-      place.x -= 1;
+      place.x -= 5;
 
       repaint();
    }

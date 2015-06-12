@@ -3,37 +3,45 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.Color.*;
 
-public class Unicorn extends Scrolling implements KeyListener {
+public class Unicorn extends Drawable implements KeyListener{
 
-   JLabel labelForIcon;
+   JLabel labelForUser;
    
-   Unicorn(Graphics pen, Point place, ImageIcon img) {
-      
+   public Unicorn(Graphics pen, Point place, ImageIcon img){
       super(pen, place);
       setOpaque(false);
+      addKeyListener(this);
       
-      labelForIcon = new JLabel(img);
+      labelForUser = new JLabel(img);
       
-      labelForIcon.addKeyListener(this);
       setFocusable(true);
-      
+
    }
+    public void paintComponent(Graphics pen) { 
    
-   public void paintComponent(Graphics pen) { 
-   
-      this.add(labelForIcon);
+      this.add(labelForUser);
       this.setLocation(place);
       super.paintComponent(pen);
-      
+    }
+    
+    public void jump() {
+      place.y -= 10;
+      repaint();
    }
    
-   public void jump() {
+   public void fall(){
       place.y += 10;
       repaint();
    }
    
    public void keyPressed(KeyEvent e){
-      System.out.println("pressed");
+      int k = e.getKeyCode();
+      if(k == KeyEvent.VK_UP){
+         jump();
+      } 
+      if(k == KeyEvent.VK_DOWN){
+         fall();
+      }
    }
    
       
@@ -42,9 +50,9 @@ public class Unicorn extends Scrolling implements KeyListener {
    }
    
    public void keyReleased(KeyEvent e){
-      System.out.println("released");
-   }
-   
+      
+      
 
-    
+   }
+  
 }
