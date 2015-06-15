@@ -25,7 +25,7 @@ public class Unicorn extends Drawable implements KeyListener{
     }
     
     public void jump() {
-      place.y -= 10;
+      place.y -= 50;
       repaint();
    }
    
