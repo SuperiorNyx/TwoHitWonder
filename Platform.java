@@ -1,34 +1,39 @@
+//Platform makes one rectangle that is a Scrolling object, and 
+//will eventually make a way to tell unicorn its cooridinates, 
+//so the two do not collide. 
+
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color.*;
+import java.awt.Graphics;
 
 public class Platform extends Scrolling {
-
-   JLabel labelForIcon;
    
-   Platform(Graphics pen, Point place, ImageIcon img) {
-   
+   //Constructs a new Platfrom, passing the Frames Graphics
+   //and the place it is at originally. 
+   Platform(Graphics pen, Point place) {
       super(pen, place);
       setOpaque(false);
-
-      
-      labelForIcon = new JLabel(img);
       
       setFocusable(true);
-  
-      
    }
    
-   public void paintComponent(Graphics pen) { 
+   //is called in paintcomponent, or whenever the platform
+   //needs to be drawn. 
+   public void drawRectangle(Graphics g) {
+      g.setColor(Color.WHITE);
+      g.fillRect(place.x, place.y, 100, 10);
+   }
    
-      this.add(labelForIcon);
-      this.setLocation(place);
+   //is called every time the timer goes off. 
+   public void paintComponent(Graphics pen) {  
+      drawRectangle(pen);
       super.paintComponent(pen);
-      if (place.x <= -400) {
- 
-            // If it has, line it back up so that its left edge is
-            // lined up to the right side of the other background image
+      
+      
+      // If it hits the edge of the screen, it puts it back on the other side.
+      if (place.x <= 0) { 
             place.x = 400;
       }      
    }
