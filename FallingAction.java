@@ -16,7 +16,7 @@ public class FallingAction implements ActionListener {
    //is called every time the Unicorns timer goes off.
    public void actionPerformed(ActionEvent event) {
       if (p == null) {
-         System.out.println("null af");
+         System.out.println("null as f");
       } else if (p.y < 711) {
          p.y += 1; 
          //System.out.println("time");   

@@ -18,7 +18,7 @@ public class Main extends JFrame {
 	   setContentPane(new JLabel(new ImageIcon("backsample2.jpg")));
       
       //adds all the drawables and ect. 
-      add(new Unicorn(getGraphics(), new Point(this.getWidth() / -2, 0), new ImageIcon("icon_rainbowdash.png")));
+      add(new Unicorn(getGraphics(), new Point((this.getWidth() / -2) + 100, 0), new ImageIcon("icon_rainbowdash.png")));
       add(new Platform(getGraphics(), new Point(50, 100)));
       
       addComponentsToPane(this.getContentPane());

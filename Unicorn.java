@@ -30,9 +30,10 @@ public class Unicorn extends Drawable implements KeyListener {
    
    //Is called whenever repaint is called.
     public void paintComponent(Graphics pen) {
-            this.add(labelForUser);
-      if (100 == fall.getY(place)){
+      this.add(labelForUser);
+      if (100 <= fall.getY(place)){
          super.paintComponent(pen);
+         System.out.println("hit");
       } else if (fall.getY(place) < 300) {
          place.y = fall.getY(place);
          super.paintComponent(pen);  
@@ -43,7 +44,7 @@ public class Unicorn extends Drawable implements KeyListener {
     //Is called in the keyListener, just changes the y coordinate 
     //and calls paintComponent.
     public void jump() {
-      place.y -= 10;
+      place.y -= 100;
       repaint();
    }
    
