@@ -6,36 +6,44 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color.*;
-import java.awt.Graphics;
 
 public class Platform extends Scrolling {
+
+   JLabel labelForIcon;
    
-   //Constructs a new Platfrom, passing the Frames Graphics
-   //and the place it is at originally. 
-   Platform(Graphics pen, Point place) {
+   //Creates a Platform object, that would eventually interact with Unicorn.
+   //This object scrolls continuously across the screen
+   Platform(Graphics pen, Point place, ImageIcon img) {
+   
       super(pen, place);
       setOpaque(false);
+
+      
+      labelForIcon = new JLabel(img);
       
       setFocusable(true);
+  
+      
    }
    
-   //is called in paintcomponent, or whenever the platform
-   //needs to be drawn. 
-   public void drawRectangle(Graphics g) {
-      g.setColor(Color.WHITE);
-      g.fillRect(place.x, place.y, 100, 10);
-   }
+   //draws the platform, and has it leapfrog from one side to the other
+   //when it reaches the edge of the screen.
+   public void paintComponent(Graphics pen) { 
    
-   //is called every time the timer goes off. 
-   public void paintComponent(Graphics pen) {  
-      drawRectangle(pen);
+      this.add(labelForIcon);
+      this.setLocation(place);
       super.paintComponent(pen);
-      
-      
-      // If it hits the edge of the screen, it puts it back on the other side.
-      if (place.x <= 0) { 
+      if (place.x <= -400) {
+ 
+            // If it has, line it back up so that its left edge is
+            // lined up to the right side of the other background image
             place.x = 400;
       }      
+   }
+   
+   //returns Point place for use outside this class
+   public Point getPoint(){
+      return place;
    }
     
 }
