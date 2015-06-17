@@ -12,7 +12,8 @@ public class Platform extends Scrolling {
    JLabel labelForIcon;
    
    //Creates a Platform object, that would eventually interact with Unicorn.
-   //This object scrolls continuously across the screen
+   //This object scrolls continuously across the screen. Uses an image icon
+   //so that an editor could create a platform out of images of their own.
    Platform(Graphics pen, Point place, ImageIcon img) {
    
       super(pen, place);
