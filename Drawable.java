@@ -6,20 +6,22 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Drawable extends JPanel {
+public class Drawable extends JPanel{
+
    Point place;
    Graphics pen;
-   
-   //Constructs a new Drawable Object, which is a JPanel. 
-   //Saves the Graphics and the Point.
+
+   //Creates a Drawable object, this object can use and save graphics
+   //and a point 
    public Drawable(Graphics g, Point p) {
       pen = g;
       this.place = p;
    }
    
-   //is called every time repaint is called or a listener 
+   //called every time repaint is called or a listener 
    //goes off. Sets the location and paints the object.
    public void paintComponent(Graphics pen) {
+   
       setLocation(place);
       super.paintComponent(pen);
    } 
